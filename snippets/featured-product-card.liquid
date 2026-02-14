@@ -57,6 +57,9 @@
         {%- elsif card_product.available -%}
           <span class="featured-products__badge featured-products__badge--new">New</span>
         {%- endif -%}
+        {%- if has_sale -%}
+          <span class="featured-products__badge featured-products__badge-sale-bottom" aria-hidden="true">{{ 'products.product.on_sale' | t }}</span>
+        {%- endif -%}
       </div>
 
       <div class="featured-products__card-content">

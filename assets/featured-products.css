@@ -296,6 +296,12 @@
   background: #000000;
 }
 
+.featured-products__badge-sale-bottom {
+  top: auto;
+  bottom: 0.5rem;
+  background: #45c0b6;
+}
+
 /* Card content - compact padding */
 .featured-products__card-content {
   padding: 0.75rem;
