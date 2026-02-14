@@ -12,7 +12,7 @@
     sections.forEach((section) => {
       const productId = section.dataset.productId;
       const sectionId = section.dataset.sectionId;
-      const url = section.dataset.recommendationsUrl;
+      const url = section.dataset.recommendationsUrl || (typeof window !== 'undefined' && window.location ? window.location.origin + '/recommendations/products' : '');
 
       if (!productId || !sectionId || !url) return;
 
@@ -43,7 +43,21 @@
           const content = section.querySelector('[id^="FeaturedProductsContent-"]');
           const newContent = newSection.querySelector('[id^="FeaturedProductsContent-"]');
 
-          if (content && newContent && newContent.innerHTML.trim().length > 0) {
+          if (!content || !newContent) return;
+
+          const hasPlaceholder = newContent.querySelector('[data-featured-products-placeholder]');
+          const newCards = newContent.querySelectorAll('.featured-products__card');
+          const currentCards = content.querySelectorAll('.featured-products__card');
+
+          if (hasPlaceholder && newCards.length === 0) {
+            return;
+          }
+
+          if (currentCards.length > 0 && newCards.length < currentCards.length) {
+            return;
+          }
+
+          if (newContent.innerHTML.trim().length > 0) {
             content.innerHTML = newContent.innerHTML;
             initSliderComponent(section);
           }

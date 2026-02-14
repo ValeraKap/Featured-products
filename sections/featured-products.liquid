@@ -26,7 +26,7 @@
   if products_count > 4
     assign show_desktop_slider = true
   endif
-  if products_count > 2
+  if products_count >= 2
     assign show_mobile_slider = true
   endif
   assign show_slider = false
@@ -69,7 +69,7 @@
         {%- endif -%}
       </div>
       {%- if show_slider and products_count > 0 -%}
-        <div class="featured-products__nav">
+        <div class="featured-products__nav{% if products_count <= 4 %} featured-products__nav--mobile-only{% endif %}">
           <button
             type="button"
             class="featured-products__nav-btn featured-products__nav-btn--prev"
@@ -95,12 +95,12 @@
     <div class="featured-products__content" id="FeaturedProductsContent-{{ section.id }}">
       {%- if products_count > 0 -%}
         <slider-component
-          class="featured-products__slider{% if show_slider %} featured-products__slider--active{% endif %}{% if show_desktop_slider %} featured-products__slider--desktop{% endif %}{% if show_mobile_slider %} featured-products__slider--mobile{% endif %}"
+          class="featured-products__slider{% if show_slider %} featured-products__slider--active{% endif %}{% if show_desktop_slider %} featured-products__slider--desktop{% endif %}{% if show_mobile_slider and products_count <= 4 %} featured-products__slider--mobile-only{% endif %}{% if show_mobile_slider and products_count > 4 %} featured-products__slider--mobile{% endif %}"
           {% if show_slider %}data-slider-active{% endif %}
         >
           <ul
             id="Slider-{{ section.id }}"
-            class="featured-products__grid{% if show_mobile_slider %} slider slider--tablet{% endif %}{% if show_desktop_slider %} slider slider--desktop{% endif %}"
+            class="featured-products__grid{% if show_desktop_slider %} slider slider--desktop{% endif %}{% if show_mobile_slider and products_count > 4 %} slider slider--tablet{% endif %}"
             role="list"
           >
             {%- for card_product in products_to_show limit: 10 -%}
@@ -153,7 +153,7 @@
       "type": "richtext",
       "id": "description",
       "label": "Description",
-      "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+      "default": "<p>Lorem ipsum odor amet, consectetuer adipiscing elit. Suscipit lectus cursus phasellus ridiculus nostra fames. Sollicitudin mi facilisi congue tellus dictumst eu ligula arcu. Vivamus luctus vel duis tempor curabitur potenti rhoncus. Orci dictum et varius feugiat pulvinar euismod iaculis diam. Lacus inceptos vel fusce interdum molestie luctus cubilia.</p>"
     },
     {
       "type": "select",
@@ -215,7 +215,7 @@
       "name": "Featured products",
       "settings": {
         "title": "Featured products",
-        "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+        "description": "<p>Lorem ipsum odor amet, consectetuer adipiscing elit. Suscipit lectus cursus phasellus ridiculus nostra fames. Sollicitudin mi facilisi congue tellus dictumst eu ligula arcu. Vivamus luctus vel duis tempor curabitur potenti rhoncus. Orci dictum et varius feugiat pulvinar euismod iaculis diam. Lacus inceptos vel fusce interdum molestie luctus cubilia.</p>"
       }
     }
   ]
