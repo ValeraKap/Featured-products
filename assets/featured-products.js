@@ -30,7 +30,7 @@
     });
     params.set('_', Date.now());
 
-    fetch(`${url}?${params}`)
+    fetch(`${url}?${params}`, { credentials: 'same-origin' })
       .then((response) => {
         if (!response.ok) throw new Error('Recommendations fetch failed');
         return response.text();
@@ -91,26 +91,20 @@
   function initHeaderNavButtons(section) {
     const prevBtn = section.querySelector('.featured-products__nav-btn--prev');
     const nextBtn = section.querySelector('.featured-products__nav-btn--next');
-    const slider = section.querySelector('[id^="Slider-"]');
+    if (!prevBtn || !nextBtn) return;
 
-    if (!slider || !prevBtn || !nextBtn) return;
-
-    function getScrollAmount() {
+    function scroll(direction) {
+      const slider = section.querySelector('[id^="Slider-"]');
+      if (!slider) return;
       const slides = slider.querySelectorAll('[id^="Slide-"]');
       const visibleSlides = Array.from(slides).filter((el) => el.offsetWidth > 0);
-      if (visibleSlides.length < 2) return slider.offsetWidth;
-      return visibleSlides[1].offsetLeft - visibleSlides[0].offsetLeft;
+      const amount = visibleSlides.length < 2 ? slider.offsetWidth : visibleSlides[1].offsetLeft - visibleSlides[0].offsetLeft;
+      const left = direction === 'next' ? slider.scrollLeft + amount : slider.scrollLeft - amount;
+      slider.scrollTo({ left, behavior: 'smooth' });
     }
 
-    prevBtn.addEventListener('click', () => {
-      const amount = getScrollAmount();
-      slider.scrollTo({ left: slider.scrollLeft - amount, behavior: 'smooth' });
-    });
-
-    nextBtn.addEventListener('click', () => {
-      const amount = getScrollAmount();
-      slider.scrollTo({ left: slider.scrollLeft + amount, behavior: 'smooth' });
-    });
+    prevBtn.addEventListener('click', () => scroll('prev'));
+    nextBtn.addEventListener('click', () => scroll('next'));
   }
 
   if (document.readyState === 'loading') {
