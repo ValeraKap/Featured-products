@@ -90,6 +90,9 @@
         "description": "<p>Lorem ipsum odor amet, consectetuer adipiscing elit. Suscipit lectus cursus phasellus ridiculus nostra fames. Sollicitudin mi facilisi congue tellus dictumst eu ligula arcu. Vivamus luctus vel duis tempor curabitur potenti rhoncus. Orci dictum et varius feugiat pulvinar euismod iaculis diam. Lacus inceptos vel fusce interdum molestie luctus cubilia.</p>",
         "heading_size": "h1",
         "fallback_collection": "automated-collection",
+        "allow_auto_generated_recommendations": true,
+        "recommendations_limit": 10,
+        "shuffle_recommendations": false,
         "color_scheme": "background-1",
         "padding_top": 36,
         "padding_bottom": 36
@@ -103,6 +106,9 @@
         "description": "<p>Lorem ipsum odor amet, consectetuer adipiscing elit. Suscipit lectus cursus phasellus ridiculus nostra fames. Sollicitudin mi facilisi congue tellus dictumst eu ligula arcu. Vivamus luctus vel duis tempor curabitur potenti rhoncus. Orci dictum et varius feugiat pulvinar euismod iaculis diam. Lacus inceptos vel fusce interdum molestie luctus cubilia.</p>",
         "heading_size": "h1",
         "fallback_collection": "frontpage",
+        "allow_auto_generated_recommendations": true,
+        "recommendations_limit": 10,
+        "shuffle_recommendations": false,
         "color_scheme": "background-1",
         "padding_top": 36,
         "padding_bottom": 36
@@ -116,6 +122,9 @@
         "description": "<p>Lorem ipsum odor amet, consectetuer adipiscing elit. Suscipit lectus cursus phasellus ridiculus nostra fames. Sollicitudin mi facilisi congue tellus dictumst eu ligula arcu. Vivamus luctus vel duis tempor curabitur potenti rhoncus. Orci dictum et varius feugiat pulvinar euismod iaculis diam. Lacus inceptos vel fusce interdum molestie luctus cubilia.</p>",
         "heading_size": "h1",
         "fallback_collection": "hydrogen",
+        "allow_auto_generated_recommendations": true,
+        "recommendations_limit": 10,
+        "shuffle_recommendations": false,
         "color_scheme": "background-1",
         "padding_top": 36,
         "padding_bottom": 36
@@ -129,6 +138,25 @@
         "description": "<p>Lorem ipsum odor amet, consectetuer adipiscing elit. Suscipit lectus cursus phasellus ridiculus nostra fames. Sollicitudin mi facilisi congue tellus dictumst eu ligula arcu. Vivamus luctus vel duis tempor curabitur potenti rhoncus. Orci dictum et varius feugiat pulvinar euismod iaculis diam. Lacus inceptos vel fusce interdum molestie luctus cubilia.</p>",
         "heading_size": "h1",
         "fallback_collection": "",
+        "allow_auto_generated_recommendations": true,
+        "recommendations_limit": 10,
+        "shuffle_recommendations": false,
+        "color_scheme": "background-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_products_4yYzLf": {
+      "type": "featured-products",
+      "name": "Featured products",
+      "settings": {
+        "title": "Featured products",
+        "description": "<p>Lorem ipsum odor amet, consectetuer adipiscing elit. Suscipit lectus cursus phasellus ridiculus nostra fames. Sollicitudin mi facilisi congue tellus dictumst eu ligula arcu. Vivamus luctus vel duis tempor curabitur potenti rhoncus. Orci dictum et varius feugiat pulvinar euismod iaculis diam. Lacus inceptos vel fusce interdum molestie luctus cubilia.</p>",
+        "heading_size": "h1",
+        "fallback_collection": "",
+        "allow_auto_generated_recommendations": true,
+        "recommendations_limit": 10,
+        "shuffle_recommendations": false,
         "color_scheme": "background-1",
         "padding_top": 36,
         "padding_bottom": 36
@@ -137,6 +165,7 @@
   },
   "order": [
     "main",
+    "featured_products_4yYzLf",
     "featured_products_efYqQg",
     "featured_products_AXWwYJ",
     "featured_products_hEzr4q",
