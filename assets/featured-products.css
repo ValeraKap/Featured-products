@@ -260,7 +260,7 @@
 .featured-products__card-image::before {
   content: '';
   display: block;
-  padding-bottom: 75%;
+  padding-bottom: 100%;
 }
 
 .featured-products__card-img,
