@@ -86,7 +86,7 @@
       "type": "featured-products",
       "name": "Featured products",
       "settings": {
-        "title": "Featured products",
+        "title": "Featured products-> Automated Collection (8 products)",
         "description": "<p>Lorem ipsum odor amet, consectetuer adipiscing elit. Suscipit lectus cursus phasellus ridiculus nostra fames. Sollicitudin mi facilisi congue tellus dictumst eu ligula arcu. Vivamus luctus vel duis tempor curabitur potenti rhoncus. Orci dictum et varius feugiat pulvinar euismod iaculis diam. Lacus inceptos vel fusce interdum molestie luctus cubilia.</p>",
         "heading_size": "h1",
         "fallback_collection": "automated-collection",
@@ -97,10 +97,9 @@
     },
     "featured_products_AXWwYJ": {
       "type": "featured-products",
-      "disabled": true,
       "name": "Featured products",
       "settings": {
-        "title": "Featured products",
+        "title": "Featured products-> Home page (0 products)",
         "description": "<p>Lorem ipsum odor amet, consectetuer adipiscing elit. Suscipit lectus cursus phasellus ridiculus nostra fames. Sollicitudin mi facilisi congue tellus dictumst eu ligula arcu. Vivamus luctus vel duis tempor curabitur potenti rhoncus. Orci dictum et varius feugiat pulvinar euismod iaculis diam. Lacus inceptos vel fusce interdum molestie luctus cubilia.</p>",
         "heading_size": "h1",
         "fallback_collection": "frontpage",
@@ -111,10 +110,9 @@
     },
     "featured_products_hEzr4q": {
       "type": "featured-products",
-      "disabled": true,
       "name": "Featured products",
       "settings": {
-        "title": "Featured products",
+        "title": "Featured products-> Hydrogen (3 products)",
         "description": "<p>Lorem ipsum odor amet, consectetuer adipiscing elit. Suscipit lectus cursus phasellus ridiculus nostra fames. Sollicitudin mi facilisi congue tellus dictumst eu ligula arcu. Vivamus luctus vel duis tempor curabitur potenti rhoncus. Orci dictum et varius feugiat pulvinar euismod iaculis diam. Lacus inceptos vel fusce interdum molestie luctus cubilia.</p>",
         "heading_size": "h1",
         "fallback_collection": "hydrogen",
@@ -125,10 +123,9 @@
     },
     "featured_products_gEG8Wt": {
       "type": "featured-products",
-      "disabled": true,
       "name": "Featured products",
       "settings": {
-        "title": "Featured products",
+        "title": "Featured products (without collection)",
         "description": "<p>Lorem ipsum odor amet, consectetuer adipiscing elit. Suscipit lectus cursus phasellus ridiculus nostra fames. Sollicitudin mi facilisi congue tellus dictumst eu ligula arcu. Vivamus luctus vel duis tempor curabitur potenti rhoncus. Orci dictum et varius feugiat pulvinar euismod iaculis diam. Lacus inceptos vel fusce interdum molestie luctus cubilia.</p>",
         "heading_size": "h1",
         "fallback_collection": "",
