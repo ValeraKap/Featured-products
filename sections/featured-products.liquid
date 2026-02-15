@@ -55,8 +55,8 @@
   class="featured-products section-{{ section.id }}-padding color-{{ section.settings.color_scheme }}"
   id="FeaturedProducts-{{ section.id }}"
   data-product-id="{{ product_id }}"
-  data-section-id="featured-products"
-  data-recommendations-url="{{ request.origin }}/recommendations/products"
+  data-section-id="{{ section.id }}"
+  data-recommendations-url="{% if request.host contains '127.0.0.1' or request.host contains 'localhost' %}https://{{ shop.permanent_domain }}{% else %}{{ request.origin }}{% endif %}/recommendations/products"
 >
   <div class="featured-products__container page-width">
     <div class="featured-products__header">

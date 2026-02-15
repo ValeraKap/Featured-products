@@ -28,6 +28,7 @@
       limit: RECOMMENDATIONS_LIMIT,
       intent: 'related'
     });
+    params.set('_', Date.now());
 
     fetch(`${url}?${params}`)
       .then((response) => {
@@ -35,6 +36,7 @@
         return response.text();
       })
       .then((html) => {
+        if (!html || html.trim().length === 0) return;
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
         const newSection = doc.querySelector(`[id^="FeaturedProducts-"]`);
@@ -64,7 +66,11 @@
         }
       })
       .catch(() => {
-        // Keep existing content (fallback products or placeholder)
+        const placeholder = section.querySelector('[data-featured-products-placeholder]');
+        if (placeholder) {
+          const text = placeholder.querySelector('.featured-products__placeholder-text');
+          if (text) text.textContent = 'Recommendations unavailable in this preview.';
+        }
       });
   }
 
