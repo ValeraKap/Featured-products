@@ -13,8 +13,19 @@
       const productId = section.dataset.productId;
       const sectionId = section.dataset.sectionId;
       const url = section.dataset.recommendationsUrl || (typeof window !== 'undefined' && window.location ? window.location.origin + '/recommendations/products' : '');
+      const allowAuto = section.dataset.allowAutoRecommendations !== 'false';
+      const hasPlaceholder = section.querySelector('[data-featured-products-placeholder]');
 
       if (!productId || !sectionId || !url) return;
+
+      if (!allowAuto) {
+        if (hasPlaceholder) {
+          const text = section.querySelector('.featured-products__placeholder-text');
+          if (text) text.textContent = 'There are no recommendations or the collection has 0 active products. Add a fallback collection or set recommendations in Search & Discovery.';
+        }
+        initHeaderNavButtons(section);
+        return;
+      }
 
       fetchRecommendations(section, productId, sectionId, url);
       initHeaderNavButtons(section);
