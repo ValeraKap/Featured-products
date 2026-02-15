@@ -28,11 +28,16 @@
 
   assign show_desktop_slider = false
   assign show_mobile_slider = false
-  if displayed_count > 4
-    assign show_desktop_slider = true
+  if displayed_count >= 2
     assign show_mobile_slider = true
   endif
-  assign show_slider = show_desktop_slider
+  if displayed_count > 4
+    assign show_desktop_slider = true
+  endif
+  assign show_slider = false
+  if show_desktop_slider or show_mobile_slider
+    assign show_slider = true
+  endif
 -%}
 
 {%- style -%}

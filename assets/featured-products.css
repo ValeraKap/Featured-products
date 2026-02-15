@@ -572,6 +572,21 @@ p.featured-products__card-description {
     min-width: 300px;
     box-sizing: border-box;
   }
+
+  .featured-products__slider--mobile:not(.featured-products__slider--desktop) .featured-products__grid {
+    display: grid;
+    overflow: visible;
+    overflow-x: visible;
+    scroll-snap-type: none;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+
+  .featured-products__slider--mobile:not(.featured-products__slider--desktop) .featured-products__grid-item {
+    flex: none;
+    min-width: 0;
+    width: auto;
+  }
 }
 
 @media screen and (max-width: 749px) {
