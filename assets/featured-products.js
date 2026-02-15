@@ -102,6 +102,8 @@
                 }
               }
             }
+            updateNavForSection(section, content, newSection);
+            initHeaderNavButtons(section);
             initSliderComponent(section);
           }
         }
@@ -127,6 +129,42 @@
         }
       }
     }
+  }
+
+  function updateNavForSection(section, content, newSection) {
+    const cardCount = content.querySelectorAll('.featured-products__card').length;
+    const header = section.querySelector('.featured-products__header');
+    if (!header) return;
+    const existingNav = header.querySelector('.featured-products__nav');
+    const newNav = newSection ? newSection.querySelector('.featured-products__nav') : null;
+
+    if (cardCount > 4) {
+      if (newNav) {
+        const clone = newNav.cloneNode(true);
+        if (existingNav) existingNav.replaceWith(clone);
+        else header.appendChild(clone);
+      } else {
+        const slider = content.querySelector('[id^="Slider-"]');
+        if (slider && !existingNav) createNavInHeader(header, slider.id);
+      }
+    } else if (existingNav) {
+      existingNav.remove();
+    }
+  }
+
+  function createNavInHeader(header, sliderId) {
+    const iconPath = 'M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z';
+    const iconSvg = '<svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6"><path fill-rule="evenodd" clip-rule="evenodd" d="' + iconPath + '" fill="currentColor"></path></svg>';
+    const nav = document.createElement('div');
+    nav.className = 'featured-products__nav';
+    nav.innerHTML =
+      '<button type="button" class="featured-products__nav-btn featured-products__nav-btn--prev" name="previous" aria-label="Previous slide" aria-controls="' +
+      (sliderId || '') +
+      '">' + iconSvg + '</button>' +
+      '<button type="button" class="featured-products__nav-btn featured-products__nav-btn--next" name="next" aria-label="Next slide" aria-controls="' +
+      (sliderId || '') +
+      '">' + iconSvg + '</button>';
+    header.appendChild(nav);
   }
 
   function initHeaderNavButtons(section) {
