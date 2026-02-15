@@ -5,7 +5,7 @@
  * - Vanilla JS
  */
 (function () {
-  const RECOMMENDATIONS_LIMIT = 10;
+  const DEFAULT_RECOMMENDATIONS_LIMIT = 10;
 
   function initFeaturedProducts() {
     const sections = document.querySelectorAll('[id^="FeaturedProducts-"]');
@@ -15,6 +15,7 @@
       const url = section.dataset.recommendationsUrl || (typeof window !== 'undefined' && window.location ? window.location.origin + '/recommendations/products' : '');
       const allowAuto = section.dataset.allowAutoRecommendations !== 'false';
       const hasPlaceholder = section.querySelector('[data-featured-products-placeholder]');
+      const limit = parseInt(section.dataset.recommendationsLimit, 10) || DEFAULT_RECOMMENDATIONS_LIMIT;
 
       if (!productId || !sectionId || !url) return;
 
@@ -22,21 +23,41 @@
         if (hasPlaceholder) {
           const text = section.querySelector('.featured-products__placeholder-text');
           if (text) text.textContent = 'There are no recommendations or the collection has 0 active products. Add a fallback collection or set recommendations in Search & Discovery.';
+        } else {
+          shuffleSectionIfEnabled(section);
         }
         initHeaderNavButtons(section);
         return;
       }
 
-      fetchRecommendations(section, productId, sectionId, url);
+      fetchRecommendations(section, productId, sectionId, url, limit);
       initHeaderNavButtons(section);
     });
   }
 
-  function fetchRecommendations(section, productId, sectionId, url) {
+  function shuffleArray(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function shuffleSectionIfEnabled(section) {
+    if (section.dataset.shuffleRecommendations !== 'true') return;
+    const slider = section.querySelector('[id^="Slider-"]');
+    if (!slider) return;
+    const slides = Array.from(slider.querySelectorAll(':scope > li'));
+    if (slides.length > 1) shuffleArray(slides).forEach((el) => slider.appendChild(el));
+  }
+
+  function fetchRecommendations(section, productId, sectionId, url, limit) {
+    const recommendationsLimit = Math.min(10, Math.max(4, limit || DEFAULT_RECOMMENDATIONS_LIMIT));
     const params = new URLSearchParams({
       product_id: productId,
       section_id: sectionId,
-      limit: RECOMMENDATIONS_LIMIT,
+      limit: recommendationsLimit,
       intent: 'related'
     });
     params.set('_', Date.now());
@@ -72,6 +93,15 @@
 
           if (newContent.innerHTML.trim().length > 0) {
             content.innerHTML = newContent.innerHTML;
+            if (section.dataset.shuffleRecommendations === 'true') {
+              const slider = content.querySelector('[id^="Slider-"]');
+              if (slider) {
+                const slides = Array.from(slider.querySelectorAll(':scope > li'));
+                if (slides.length > 1) {
+                  shuffleArray(slides).forEach((el) => slider.appendChild(el));
+                }
+              }
+            }
             initSliderComponent(section);
           }
         }
